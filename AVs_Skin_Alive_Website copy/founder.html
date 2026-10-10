@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet the Founder | AV's Skin Alive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      /* Animated top offer loop */
+      .offer-ticker {
+        width: 100%;
+        overflow: hidden;
+        background: linear-gradient(90deg, #351523, #7a3455, #351523);
+        color: #fff7fb;
+        border-bottom: 1px solid rgba(255,255,255,.18);
+        white-space: nowrap;
+        position: relative;
+        z-index: 1001;
+        padding: 10px 0;
+        font: 500 13px/1.4 'Poppins', sans-serif;
+        letter-spacing: .35px;
+      }
+      .offer-ticker-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        animation: offerTickerLoop 28s linear infinite;
+      }
+      .offer-ticker-track span {
+        display: inline-block;
+        padding: 0 34px;
+      }
+      .offer-ticker:hover .offer-ticker-track { animation-play-state: paused; }
+      @keyframes offerTickerLoop {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      /* Clickable images + gentle hover zoom in/out */
+      body img:not(.logo img) { cursor: zoom-in; }
+      .image-zoom-ready {
+        transition: transform .35s ease, filter .35s ease, box-shadow .35s ease;
+        will-change: transform;
+      }
+      .image-zoom-ready:hover {
+        animation: imageZoomPulse 1.15s ease-in-out infinite alternate;
+        filter: saturate(1.06);
+      }
+      @keyframes imageZoomPulse {
+        from { transform: scale(1); }
+        to { transform: scale(1.055); }
+      }
+      .image-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 28px;
+        background: rgba(15, 7, 12, .91);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .25s ease, visibility .25s ease;
+        cursor: zoom-out;
+      }
+      .image-lightbox.is-open { opacity: 1; visibility: visible; }
+      .image-lightbox img {
+        max-width: min(94vw, 1200px);
+        max-height: 88vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 18px 70px rgba(0,0,0,.5);
+        cursor: default;
+        animation: lightboxPop .28s ease both;
+      }
+      .image-lightbox-close {
+        position: absolute;
+        top: 16px;
+        right: 22px;
+        border: 0;
+        background: rgba(255,255,255,.14);
+        color: #fff;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 30px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      @keyframes lightboxPop {
+        from { transform: scale(.92); opacity: .5; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .offer-ticker-track, .image-zoom-ready:hover { animation: none; }
+      }
+    </style>
+
+
+<style>
+/* Founder content only — the existing site header, footer and shared design stay unchanged. */
+.founder-page{padding:72px 7%;background:linear-gradient(135deg,#fff8fb 0%,#fff 52%,#f8eaf0 100%);}
+.founder-wrap{max-width:1160px;margin:0 auto;}
+.founder-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:58px;align-items:center;}
+.founder-kicker{display:inline-block;color:#a85c7b;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:600;margin-bottom:16px;}
+.founder-copy h1{font-family:'Playfair Display',serif;color:#57283f;font-size:clamp(38px,5vw,64px);line-height:1.12;margin:0 0 22px;}
+.founder-copy h1 em{color:#a85c7b;font-weight:400;}
+.founder-copy p{font-size:15px;line-height:1.9;color:#76646e;margin:0 0 18px;}
+.founder-photo{position:relative;max-width:440px;width:100%;margin-left:auto;padding:0 14px 18px 0;}
+.founder-photo img{display:block;width:100%;height:510px;object-fit:cover;object-position:center;border:8px solid #fff;border-radius:220px 220px 18px 18px;box-shadow:0 22px 55px rgba(87,40,63,.18);}
+.founder-photo .photo-fallback{height:510px;border:8px solid #fff;border-radius:220px 220px 18px 18px;background:linear-gradient(145deg,#f6e4ec,#e8c8d7);color:#57283f;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 22px 55px rgba(87,40,63,.18);padding:25px;}
+.founder-photo .photo-fallback i{font-size:54px;margin-bottom:18px;}
+.founder-photo .photo-fallback strong{font-family:'Playfair Display',serif;font-size:25px;}
+.founder-photo .photo-fallback span{font-size:12px;line-height:1.7;margin-top:8px;}
+.founder-photo .photo-note{position:absolute;right:0;bottom:45px;background:#fff;padding:16px 20px;border-radius:10px;box-shadow:0 8px 28px rgba(87,40,63,.15);color:#57283f;font-family:'Playfair Display',serif;font-size:18px;}
+.founder-story{padding:65px 7%;background:#fff;}
+.founder-story-inner{max-width:1000px;margin:0 auto;}
+.founder-story h2,.founder-values h2{font-family:'Playfair Display',serif;color:#57283f;font-size:clamp(30px,4vw,44px);text-align:center;margin:0 0 18px;}
+.founder-story .story-intro,.founder-values .values-intro{text-align:center;max-width:760px;margin:0 auto 38px;color:#76646e;font-size:14px;line-height:1.9;}
+.founder-story-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:35px;align-items:stretch;}
+.founder-quote{background:#f8edf2;border-left:4px solid #a85c7b;border-radius:12px;padding:32px;color:#57283f;font-family:'Playfair Display',serif;font-size:25px;line-height:1.55;display:flex;align-items:center;}
+.founder-bio p{color:#76646e;font-size:14px;line-height:1.95;margin:0 0 15px;}
+.founder-values{padding:65px 7%;background:#fcf6f8;}
+.founder-values-inner{max-width:1100px;margin:0 auto;}
+.founder-values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:32px;}
+.founder-value{background:#fff;border:1px solid #f0dfe7;border-radius:14px;padding:28px 24px;transition:transform .3s,box-shadow .3s;}
+.founder-value:hover{transform:translateY(-6px);box-shadow:0 15px 32px rgba(87,40,63,.1);}
+.founder-value i{display:grid;place-items:center;width:48px;height:48px;border-radius:12px;background:#f5e3eb;color:#a85c7b;font-size:20px;margin-bottom:17px;}
+.founder-value h3{font-family:'Playfair Display',serif;color:#57283f;font-size:22px;margin:0 0 10px;}
+.founder-value p{color:#76646e;font-size:13px;line-height:1.85;margin:0;}
+.founder-signoff{text-align:center;background:linear-gradient(115deg,#351523,#7a3455);padding:48px 7%;color:#fff;}
+.founder-signoff h2{font-family:'Playfair Display',serif;font-size:clamp(26px,3.6vw,40px);margin:0 0 12px;}
+.founder-signoff p{font-size:13px;color:#f7e7ee;margin:0;}
+@media(max-width:800px){.founder-page{padding:52px 6%;}.founder-hero{grid-template-columns:1fr;gap:35px}.founder-photo{margin:0 auto;max-width:390px}.founder-photo img,.founder-photo .photo-fallback{height:440px}.founder-story-grid{grid-template-columns:1fr}.founder-values-grid{grid-template-columns:1fr}.founder-story,.founder-values{padding:52px 6%;}}
+@media(prefers-reduced-motion:reduce){.founder-value{transition:none;}}
+</style>
+
+</head>
+<body>
+
+    <!-- Top offer ticker -->
+    <div class="offer-ticker" role="region" aria-label="Special offers">
+        <div class="offer-ticker-track">
+            <span>✨ Special Offers on Bridal Makeup &amp; Salon Packages</span>
+            <span>💖 Book Your Appointment Today!</span>
+            <span>💄 Look Good • Feel Confident • Be You</span>
+            <span>✨ Special Offers on Bridal Makeup &amp; Salon Packages</span>
+            <span>💖 Book Your Appointment Today!</span>
+            <span>💄 Look Good • Feel Confident • Be You</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">
+            <!-- Replace src with your exact logo image file -->
+            <img src="images/logo-white.png" alt="AV's Skin Alive Logo" height="55" width="180">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="index.html#reviews">Reviews</a></li>
+                <li><a href="index.html#videos">Videos</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="index.html#appointment" class="btn-primary"><i class="fas fa-calendar-alt"></i> Book Appointment</a>
+    </header>
+
+
+<main>
+<section class="founder-page">
+  <div class="founder-wrap founder-hero">
+    <div class="founder-copy">
+      <span class="founder-kicker">The Person Behind the Passion</span>
+      <h1>Meet the <em>Founder</em></h1>
+      <p>Welcome to AV's Skin Alive — a unisex salon and academy built around beauty, care and confidence. Our founder believes that beauty services should feel personal, welcoming and thoughtfully tailored to every client.</p>
+      <p>With a passion for beauty and self-expression, the vision is to create a place where clients can explore hair, makeup, skin and nail services in a comfortable environment.</p>
+      <a href="index.html#appointment" class="btn-primary"><i class="fas fa-calendar-alt"></i> Book Appointment</a>
+    </div>
+    <div class="founder-photo">
+      <img src="images/founder.jpg" alt="Founder of AV's Skin Alive" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="photo-fallback"><i class="fas fa-user-tie"></i><strong>Founder Photo</strong><span>Add the founder's actual photo as<br><b>images/founder.jpg</b></span></div>
+      <div class="photo-note">AV's Skin Alive</div>
+    </div>
+  </div>
+</section>
+<section class="founder-story">
+  <div class="founder-story-inner">
+    <h2>The Story Behind the Salon</h2>
+    <p class="story-intro">A simple vision: make every visit feel welcoming, professional and focused on the individual.</p>
+    <div class="founder-story-grid">
+      <div class="founder-quote">“Our goal is to help every client feel cared for, comfortable and confident in their own beauty.”</div>
+      <div class="founder-bio">
+        <p>AV's Skin Alive brings salon services and beauty learning together under one roof. The focus is on listening to each client's needs, understanding their style and helping them choose services that suit them.</p>
+        <p>From everyday hair and skin care to makeup and nail services, the salon aims to combine attention to detail with a friendly experience. The academy side also encourages creativity, practice and continued skill development.</p>
+        <p><strong>Founder details:</strong> Replace this sample copy with the founder's real name, qualifications, experience and personal journey before publishing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="founder-values">
+  <div class="founder-values-inner">
+    <h2>What Guides Our Work</h2>
+    <p class="values-intro">The principles behind the experience we aim to give every client.</p>
+    <div class="founder-values-grid">
+      <article class="founder-value"><i class="fas fa-heart"></i><h3>Care First</h3><p>We value listening, thoughtful guidance and a welcoming experience for every client.</p></article>
+      <article class="founder-value"><i class="fas fa-spa"></i><h3>Beauty with Purpose</h3><p>We focus on personal style, careful service and helping people feel confident.</p></article>
+      <article class="founder-value"><i class="fas fa-graduation-cap"></i><h3>Learn &amp; Grow</h3><p>We encourage creativity and skill development through our salon and academy.</p></article>
+    </div>
+  </div>
+</section>
+<section class="founder-signoff"><h2>Beauty • Confidence • Care</h2><p>AV's Skin Alive — Unisex Salon &amp; Academy</p></section>
+</main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content flex-between">
+            <div class="footer-logo">
+                <img src="images/logo-white.png" alt="Logo White" height="65" width="180">
+            </div>
+            <nav class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#services">Services</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#reviews">Reviews</a>
+                <a href="index.html#videos">Videos</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <div class="footer-social">
+                <span>Follow Us</span>
+                <div class="social-icons">
+                    <a href="index.html"><i class="fab fa-facebook-f"></i></a>
+                    <a href="index.html"><i class="fab fa-instagram"></i></a>
+                    <a href="index.html"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AV's Skin Alive. All Rights Reserved.</p>
+        </div>
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919999085012" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </footer>
+
+<style>
+/* Universal button zoom-in / zoom-out animation */
+.btn-primary,
+.btn-outline,
+.more-videos-btn,
+button,
+.appointment-form button,
+.social-icons a,
+.video-card a,
+.whatsapp-float {
+  transform-origin: center;
+  animation: buttonZoomPulse 1.8s ease-in-out infinite;
+  transition: box-shadow .25s ease, filter .25s ease, background-color .25s ease;
+}
+
+.btn-primary:hover,
+.btn-outline:hover,
+.more-videos-btn:hover,
+button:hover,
+.appointment-form button:hover,
+.social-icons a:hover,
+.video-card a:hover,
+.whatsapp-float:hover {
+  animation-duration: .65s;
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px rgba(168, 92, 123, .28);
+}
+
+@keyframes buttonZoomPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+
+/* WhatsApp floating button: continuous pulse + soft glow */
+.whatsapp-float {
+  animation: whatsappPulse 1.5s ease-in-out infinite;
+  will-change: transform, box-shadow;
+  z-index: 1000;
+}
+@keyframes whatsappPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, .55);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
+
+/* Keep animations comfortable for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary, .btn-outline, .more-videos-btn, button,
+  .appointment-form button, .social-icons a, .video-card a,
+  .whatsapp-float {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+
+<script>
+(function () {
+  // Add a lightbox to images that are not already links (keeps video/social links working).
+  const images = document.querySelectorAll(
+    'img:not(.logo img):not(.footer-logo img):not(a img)'
+  );
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'image-lightbox';
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-label', 'Expanded image preview');
+  lightbox.innerHTML = '<button class="image-lightbox-close" type="button" aria-label="Close image">×</button><img alt="">';
+  document.body.appendChild(lightbox);
+
+  const preview = lightbox.querySelector('img');
+  const closeButton = lightbox.querySelector('.image-lightbox-close');
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    preview.removeAttribute('src');
+  }
+
+  images.forEach(function (img) {
+    img.classList.add('image-zoom-ready');
+    img.addEventListener('click', function () {
+      if (!img.currentSrc && !img.src) return;
+      preview.src = img.currentSrc || img.src;
+      preview.alt = img.alt || 'Expanded image preview';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeButton.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (event) {
+    if (event.target === lightbox) closeLightbox();
+  });
+  preview.addEventListener('click', function (event) { event.stopPropagation(); });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
+
+</body>
+</html>

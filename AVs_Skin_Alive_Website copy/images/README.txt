@@ -1,0 +1,1 @@
+Please place your original photos, logos, and gallery images here. Update the filenames in index.html to match.

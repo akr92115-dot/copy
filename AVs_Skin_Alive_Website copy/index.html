@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AV's Skin Alive - Unisex Salon & Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+      /* Animated top offer loop */
+      .offer-ticker {
+        width: 100%;
+        overflow: hidden;
+        background: linear-gradient(90deg, #351523, #7a3455, #351523);
+        color: #fff7fb;
+        border-bottom: 1px solid rgba(255,255,255,.18);
+        white-space: nowrap;
+        position: relative;
+        z-index: 1001;
+        padding: 10px 0;
+        font: 500 13px/1.4 'Poppins', sans-serif;
+        letter-spacing: .35px;
+      }
+      .offer-ticker-track {
+        display: flex;
+        align-items: center;
+        width: max-content;
+        animation: offerTickerLoop 28s linear infinite;
+      }
+      .offer-ticker-track span {
+        display: inline-block;
+        padding: 0 34px;
+      }
+      .offer-ticker:hover .offer-ticker-track { animation-play-state: paused; }
+      @keyframes offerTickerLoop {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+
+      /* Clickable images + gentle hover zoom in/out */
+      body img:not(.logo img) { cursor: zoom-in; }
+      .image-zoom-ready {
+        transition: transform .35s ease, filter .35s ease, box-shadow .35s ease;
+        will-change: transform;
+      }
+      .image-zoom-ready:hover {
+        animation: imageZoomPulse 1.15s ease-in-out infinite alternate;
+        filter: saturate(1.06);
+      }
+      @keyframes imageZoomPulse {
+        from { transform: scale(1); }
+        to { transform: scale(1.055); }
+      }
+      .image-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 28px;
+        background: rgba(15, 7, 12, .91);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .25s ease, visibility .25s ease;
+        cursor: zoom-out;
+      }
+      .image-lightbox.is-open { opacity: 1; visibility: visible; }
+      .image-lightbox img {
+        max-width: min(94vw, 1200px);
+        max-height: 88vh;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        border-radius: 10px;
+        box-shadow: 0 18px 70px rgba(0,0,0,.5);
+        cursor: default;
+        animation: lightboxPop .28s ease both;
+      }
+      .image-lightbox-close {
+        position: absolute;
+        top: 16px;
+        right: 22px;
+        border: 0;
+        background: rgba(255,255,255,.14);
+        color: #fff;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        font-size: 30px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      @keyframes lightboxPop {
+        from { transform: scale(.92); opacity: .5; }
+        to { transform: scale(1); opacity: 1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .offer-ticker-track, .image-zoom-ready:hover { animation: none; }
+      }
+    </style>
+
+</head>
+<body>
+    <!-- Top offer ticker -->
+    <div class="offer-ticker" role="region" aria-label="Special offers">
+        <div class="offer-ticker-track">
+            <span>✨ Special Offers on Bridal Makeup &amp; Salon Packages</span>
+            <span>💖 Book Your Appointment Today!</span>
+            <span>💄 Look Good • Feel Confident • Be You</span>
+            <span>✨ Special Offers on Bridal Makeup &amp; Salon Packages</span>
+            <span>💖 Book Your Appointment Today!</span>
+            <span>💄 Look Good • Feel Confident • Be You</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">
+            <!-- Replace src with your exact logo image file -->
+            <img src="images/logo-white.png" alt="AV's Skin Alive Logo" height="55" width="180">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="founder.html"
+                  >About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <a href="#appointment" class="btn-primary"><i class="fas fa-calendar-alt"></i> Book Appointment</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-text">
+            <span class="subtitle">Look Good • Feel Confident • Be You</span>
+            <h1>Your Beauty,<br><em>Our Passion</em></h1>
+            <h2>Unisex Salon & Academy</h2>
+            <p>Hair • Makeup • Skin • Nails</p>
+            <div class="hero-buttons">
+                <a href="#appointment" class="btn-primary"><i class="fas fa-calendar-alt"></i> Book an Appointment</a>
+                <a href="https://wa.me/919315371095"
+                 class="btn-outline"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/hero-bg.png" alt="Salon Interior">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-text">
+            <span class="section-subtitle">About the Salon</span>
+            <h2>More Than Just a Salon,<br>It's a Beauty Destination</h2>
+            <p>AV's Skin Alive Unisex Salon & Academy is a premium beauty destination offering professional salon services for both men and women. We focus on enhancing your natural beauty with expert care, high-quality products and modern techniques. From hair to skin, nails to makeup - we make sure you look and feel your best.</p>
+            <a href="founder.html"
+            class="btn-outline"><i class="fas fa-user"></i> Meet the Founder</a>
+        </div>
+        <div class="about-image">
+            <img src="images/about-bride.png" alt="Indian Bride">
+            <div class="about-overlay">
+                <h3>Beauty<br>for<br>Everyone</h3>
+                <p>Unisex Salon<br>& Academy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-header text-center">
+            <span class="section-subtitle">Our Services</span>
+            <h2>Look Good, Feel Great</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-cut service-icon"></i>
+                <h3>Hair</h3>
+                <p>Haircut • Styling<br>Color • Treatments</p>
+                <img src="images/service-hair.png" alt="Hair Service">
+            </div>
+            <div class="service-card">
+                <i class="fas fa-paint-brush service-icon"></i>
+                <h3>Makeup</h3>
+                <p>Party • Bridal<br>HD Makeup</p>
+                <img src="images/service-makeup.png" alt="Makeup Service">
+            </div>
+            <div class="service-card">
+                <i class="fas fa-spa service-icon"></i>
+                <h3>Beauty & Skin</h3>
+                <p>Facials • Cleanup<br>Skin Treatments</p>
+                <img src="images/service-skin.png" alt="Skin Service">
+            </div>
+            <div class="service-card">
+                <i class="fas fa-hand-sparkles service-icon"></i>
+                <h3>Nail Bar</h3>
+                <p>Manicure • Pedicure<br>Nail Art</p>
+                <img src="images/service-nails.png" alt="Nail Service" height="20">
+            </div>
+            <div class="service-card">
+                <i class="fas fa-ring service-icon"></i>
+                <h3>Bridal Makeup</h3>
+                <p>Traditional • HD<br>Bridal Packages</p>
+                <img src="images/service-bridal.png" alt="Bridal Service">
+            </div>
+            <div class="service-card package-card">
+                <i class="fas fa-gift service-icon"></i>
+                <h3>Salon Packages</h3>
+                <p>Special Packages<br>For You</p>
+                <ul class="package-list">
+                    <li>Package-1 <span>499/- Only</span></li>
+                    <li>Package-2 <span>699/- Only</span></li>
+                    <li>Package-3 <span>1199/- Only</span></li>
+                    <li>Package-4 <span>1699/- Only</span></li>
+                    <li>Package-5 <span>1999/- Only</span></li>
+                    <li>Package-6 <span>2499/- Only</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="section-header flex-between">
+            <div>
+                <span class="section-subtitle">Our Gallery</span>
+                <h2>Glimpses of Our Work</h2>
+            </div>
+            <a href="gallery.html"
+            class="btn-outline">View All Photos &rarr;</a>
+        </div>
+        <div class="gallery-grid">
+            <img src="images/image1.png" alt="Gallery Image 1">
+            <img src="images/image2.png" alt="Gallery Image 2">
+            <img src="images/image3.png" alt="Gallery Image 3">
+            <img src="images/image4.png" alt="Gallery Image 4">
+            <img src="images/image5.png" alt="Gallery Image 5">
+            
+        </div>
+    </section>
+ <!-- GOOGLE REVIEWS SECTION -->
+<section id="reviews"
+ class="reviews-section">
+
+  <div class="reviews-header">
+    <div>
+      <span class="section-label">Client Reviews</span>
+      <h2>What Our Clients Say</h2>
+    </div>
+
+    <div class="google-rating">
+      <div class="google-info">
+        <span class="google-g">G</span>
+        <div>
+          <strong>Rated 4.8/5 on Google</strong>
+          <div class="rating-stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-grid">
+
+    <!-- Review 1 -->
+    <article class="review-card">
+      <div class="review-user">
+        <div class="user-icon">P</div>
+        <div>
+          <h3>Priya Sharma</h3>
+          <div class="review-meta">
+            <span class="rating-stars">★★★★★</span>
+            <span>2 months ago</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Amazing experience! The staff is very friendly and
+        professional. My hair and makeup look were flawless.
+        Highly recommended!
+      </p>
+
+      <div class="review-source">
+        <span class="google-g">G</span>
+        <span>Google Review</span>
+      </div>
+    </article>
+
+    <!-- Review 2 -->
+    <article class="review-card">
+      <div class="review-user">
+        <div class="user-icon">R</div>
+        <div>
+          <h3>Rahul Verma</h3>
+          <div class="review-meta">
+            <span class="rating-stars">★★★★★</span>
+            <span>3 months ago</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Best unisex salon in the area. Great service, clean
+        environment and skilled team. I always feel confident
+        after every visit.
+      </p>
+
+      <div class="review-source">
+        <span class="google-g">G</span>
+        <span>Google Review</span>
+      </div>
+    </article>
+
+    <!-- Review 3 -->
+    <article class="review-card">
+      <div class="review-user">
+        <div class="user-icon">S</div>
+        <div>
+          <h3>Sneha Gupta</h3>
+          <div class="review-meta">
+            <span class="rating-stars">★★★★★</span>
+            <span>4 months ago</span>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Loved the bridal makeup service! It was exactly how I
+        imagined. Thank you AV's Skin Alive for making my
+        special day even more special.
+      </p>
+
+      <div class="review-source">
+        <span class="google-g">G</span>
+        <span>Google Review</span>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+<!-- INSTAGRAM VIDEO TESTIMONIALS SECTION -->
+<section id="videos"
+ class="testimonials-section">
+
+  <div class="testimonials-header">
+    <div>
+      <span class="section-label">Video Testimonials</span>
+      <h2>Real People. Real Stories.</h2>
+    </div>
+
+    <a
+      href="https://www.instagram.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="more-videos-btn"
+    >
+      Watch More Videos <span>→</span>
+    </a>
+  </div>
+
+  <div class="video-grid">
+
+    <!-- Video 1 -->
+    <article class="video-card">
+      <a
+        href="https://www.instagram.com/reel/Ckx9Pv1Mqh8/?psln=MXdtNG13a3Jkd2Rxeg=="
+        target="_blank"
+        rel="noopener noreferrer"
+        class="video-thumbnail"
+        aria-label="Watch Hair Transformation on Instagram"
+      >
+        <img
+          src="images/video1.png"
+          alt="Hair transformation video testimonial"
+          loading="lazy"
+        >
+        <span class="instagram-play">▶</span>
+        <span class="instagram-label">Instagram ↗</span>
+      </a>
+
+      <h3>Happy Client - Hair Transformation</h3>
+      <p>Watch our client's transformation</p>
+    </article>
+
+    <!-- Video 2 -->
+    <article class="video-card">
+      <a
+        href="https://www.instagram.com/reel/Cjcxb0QJeO1/?srtk=eTVwd2t6ZTVqYno0"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="video-thumbnail"
+        aria-label="Watch Bridal Makeup Experience on Instagram"
+      >
+        <img
+          src="images/video2.png"
+          alt="Bridal makeup video testimonial"
+          loading="lazy"
+        >
+        <span class="instagram-play">▶</span>
+        <span class="instagram-label">Instagram ↗</span>
+      </a>
+
+      <h3>Bridal Makeup Experience</h3>
+      <p>See our bridal makeup work</p>
+    </article>
+
+    <!-- Video 3 -->
+    <article class="video-card">
+      <a
+        href="https://www.instagram.com/reel/Chqn9AxpI9d/?mdxt=MTczY2s4YzJyYmdveA=="
+        target="_blank"
+        rel="noopener noreferrer"
+        class="video-thumbnail"
+        aria-label="Watch Salon Tour on Instagram"
+      >
+        <img
+          src="images/video3.png"
+          alt="Salon tour and client feedback"
+          loading="lazy"
+        >
+        <span class="instagram-play">▶</span>
+        <span class="instagram-label">Instagram ↗</span>
+      </a>
+
+      <h3>Salon Tour &amp; Client Feedback</h3>
+      <p>Explore our salon experience</p>
+    </article>
+
+  </div>
+</section>
+
+
+<style>
+/* GENERAL STYLING */
+.reviews-section,
+.testimonials-section {
+  box-sizing: border-box;
+  padding: 45px 6%;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #402333;
+}
+
+.reviews-section *,
+.testimonials-section * {
+  box-sizing: border-box;
+}
+
+.reviews-section {
+  background: #fcf8f4;
+}
+
+.testimonials-section {
+  background: #fffdfb;
+  position: relative;
+}
+
+/* HEADERS */
+.reviews-header,
+.testimonials-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.section-label {
+  display: block;
+  color: #a85c7b;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.reviews-header h2,
+.testimonials-header h2 {
+  color: #57283f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(27px, 3vw, 38px);
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* GOOGLE RATING */
+.google-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.google-g {
+  font-size: 27px;
+  font-weight: 700;
+  color: #4285f4;
+  display: inline-block;
+}
+
+.google-info strong {
+  font-size: 13px;
+  color: #494047;
+}
+
+.rating-stars {
+  color: #f4b400;
+  letter-spacing: 2px;
+  font-size: 19px;
+  margin-top: 5px;
+}
+
+/* REVIEW CARDS */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.review-card {
+  background: #fff;
+  border: 1px solid #f0e9e6;
+  border-radius: 15px;
+  padding: 24px;
+  box-shadow: 0 5px 20px rgba(80, 42, 57, 0.05);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(80, 42, 57, 0.1);
+}
+
+.review-user {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.user-icon {
+  width: 43px;
+  height: 43px;
+  min-width: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #2369b8;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.review-user h3 {
+  font-size: 15px;
+  color: #383039;
+  margin: 0 0 5px;
+}
+
+.review-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.review-meta .rating-stars {
+  font-size: 14px;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.review-meta span:last-child {
+  color: #91868c;
+  font-size: 11px;
+}
+
+.review-card > p {
+  color: #655c62;
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0 0 22px;
+}
+
+.review-source {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #7b7077;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.review-source .google-g {
+  font-size: 22px;
+}
+
+/* TESTIMONIAL BUTTON */
+.more-videos-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 13px 22px;
+  border: 1.5px solid #a85c7b;
+  border-radius: 30px;
+  color: #713b54;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background 0.25s ease,
+              color 0.25s ease;
+}
+
+.more-videos-btn:hover {
+  background: #713b54;
+  color: #fff;
+}
+
+/* VIDEO GRID */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.video-card {
+  min-width: 0;
+}
+
+.video-thumbnail {
+  display: block;
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #eee1e5;
+  text-decoration: none;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.video-thumbnail:hover img {
+  transform: scale(1.05);
+}
+
+.instagram-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #e1306c;
+  color: white;
+  font-size: 21px;
+  padding-left: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.instagram-label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #8b315b;
+  padding: 7px 11px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.video-card h3 {
+  margin: 14px 0 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #44313c;
+}
+
+.video-card > p {
+  color: #8b7e85;
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+  .reviews-grid,
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reviews-header,
+  .testimonials-header {
+    align-items: flex-start;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .reviews-section,
+  .testimonials-section {
+    padding: 35px 18px;
+  }
+
+  .reviews-header,
+  .testimonials-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .reviews-grid,
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .review-card {
+    padding: 20px;
+  }
+
+  .google-rating {
+    align-self: flex-start;
+  }
+
+  .more-videos-btn {
+    padding: 12px 18px;
+  }
+
+  .reviews-header h2,
+  .testimonials-header h2 {
+    font-size: 29px;
+  }
+}
+</style>
+
+    <!-- Contact & Appointment Section -->
+    <section id="contact" class="contact-section">
+       
+<div class="appointment-form" id="appointment">
+    <h2>Book Your<br>Appointment</h2>
+    <p>Get the best beauty experience, just a click away!</p>
+
+    <form id="bookingForm">
+        <div class="form-group">
+            <input type="text" name="name"
+                   placeholder="Your Name *" required>
+
+            <input type="tel" name="phone"
+                   placeholder="Phone Number *"
+                   required pattern="[0-9+\-\s()]{7,20}">
+        </div>
+
+        <div class="form-group">
+            <select name="service" required>
+                <option value="">Select Service *</option>
+                <option value="Hair">Hair</option>
+                <option value="Makeup">Makeup</option>
+                <option value="Skin">Skin</option>
+            </select>
+
+            <input type="date" name="date"
+                   aria-label="Preferred Date" required>
+        </div>
+
+        <div class="form-group">
+            <input type="time" name="time"
+                   aria-label="Preferred Time" required>
+        </div>
+
+        <textarea name="requirement"
+                  placeholder="Tell us about your requirement..."></textarea>
+
+        <button type="submit" class="btn-primary block"
+                id="bookingSubmit">
+            Submit Booking
+        </button>
+
+        <p id="bookingMessage" role="status"
+           aria-live="polite"></p>
+    </form>
+</div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzryjduS96wSj_FPAMlkzmIZngM4YEOYtb6-nzc2SKcW-0IInlHEVk8dD7qbMPst5gosQ/exec";
+
+document.getElementById("bookingForm")
+.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const form = this;
+    const button = document.getElementById("bookingSubmit");
+    const message = document.getElementById("bookingMessage");
+
+    if (SCRIPT_URL.includes("PASTE_YOUR")) {
+        message.textContent = "Please add your Google Apps Script URL.";
+        return;
+    }
+
+    button.disabled = true;
+    button.textContent = "Submitting...";
+    message.textContent = "";
+
+    try {
+        const formData = new FormData(form);
+        const body = new URLSearchParams();
+
+        for (const [key, value] of formData.entries()) {
+            body.append(key, value);
+        }
+
+        await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: body
+        });
+
+        message.textContent =
+            "Your booking request has been sent. Please contact the salon if you need confirmation.";
+        form.reset();
+    } catch (error) {
+        message.textContent =
+            "Unable to send your request. Please try again or contact the salon.";
+    } finally {
+        button.disabled = false;
+        button.textContent = "Submit Booking";
+    }
+});
+</script> 
+
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>We're here to help you with any queries!</p>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <strong>+91 99990 85012, 78385 23155</strong>
+                    <span>Call for appointment</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <strong>avsskinalive@gmail.com</strong>
+                    <span>We reply within 24 hours</span>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <strong>C, 3/155, oppsite jain mandir, Block C, Yamuna Vihar, New Delhi, Delhi, 110053</strong>
+                    <span>Visit us for a better experience</span>
+                </div>
+            </div>
+            
+            <!-- GOOGLE MAPS IFRAME -->
+            <div class="map-container">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6999.277218893525!2d77.27223607323893!3d28.700455255584046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5f653c4195%3A0x8dee80b85ebd8f26!2sAV's%20skin%20alive%20unisex%20salon%20and%20Academy!5e0!3m2!1sen!2sin!4v1791599379250!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content flex-between">
+            <div class="footer-logo">
+                <img src="images/logo-white.png" alt="Logo White" height="65" width="180">
+            </div>
+            <nav class="footer-nav">
+                <a href="#">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#videos">Videos</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="footer-social">
+                <span>Follow Us</span>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AV's Skin Alive. All Rights Reserved.</p>
+        </div>
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919315371095"
+         class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </footer>
+
+
+
+<style>
+/* Universal button zoom-in / zoom-out animation */
+.btn-primary,
+.btn-outline,
+.more-videos-btn,
+button,
+.appointment-form button,
+.social-icons a,
+.video-card a,
+.whatsapp-float {
+  transform-origin: center;
+  animation: buttonZoomPulse 1.8s ease-in-out infinite;
+  transition: box-shadow .25s ease, filter .25s ease, background-color .25s ease;
+}
+
+.btn-primary:hover,
+.btn-outline:hover,
+.more-videos-btn:hover,
+button:hover,
+.appointment-form button:hover,
+.social-icons a:hover,
+.video-card a:hover,
+.whatsapp-float:hover {
+  animation-duration: .65s;
+  filter: brightness(1.08);
+  box-shadow: 0 8px 24px rgba(168, 92, 123, .28);
+}
+
+@keyframes buttonZoomPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.045); }
+}
+
+/* WhatsApp floating button: continuous pulse + soft glow */
+.whatsapp-float {
+  animation: whatsappPulse 1.5s ease-in-out infinite;
+  will-change: transform, box-shadow;
+  z-index: 1000;
+}
+@keyframes whatsappPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, .55);
+  }
+  50% {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+}
+
+/* Keep animations comfortable for visitors who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary, .btn-outline, .more-videos-btn, button,
+  .appointment-form button, .social-icons a, .video-card a,
+  .whatsapp-float {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+
+
+<script>
+(function () {
+  // Add a lightbox to images that are not already links (keeps video/social links working).
+  const images = document.querySelectorAll(
+    'img:not(.logo img):not(.footer-logo img):not(a img)'
+  );
+
+  const lightbox = document.createElement('div');
+  lightbox.className = 'image-lightbox';
+  lightbox.setAttribute('role', 'dialog');
+  lightbox.setAttribute('aria-modal', 'true');
+  lightbox.setAttribute('aria-label', 'Expanded image preview');
+  lightbox.innerHTML = '<button class="image-lightbox-close" type="button" aria-label="Close image">×</button><img alt="">';
+  document.body.appendChild(lightbox);
+
+  const preview = lightbox.querySelector('img');
+  const closeButton = lightbox.querySelector('.image-lightbox-close');
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    document.body.style.overflow = '';
+    preview.removeAttribute('src');
+  }
+
+  images.forEach(function (img) {
+    img.classList.add('image-zoom-ready');
+    img.addEventListener('click', function () {
+      if (!img.currentSrc && !img.src) return;
+      preview.src = img.currentSrc || img.src;
+      preview.alt = img.alt || 'Expanded image preview';
+      lightbox.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeButton.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (event) {
+    if (event.target === lightbox) closeLightbox();
+  });
+  preview.addEventListener('click', function (event) { event.stopPropagation(); });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeLightbox();
+  });
+})();
+</script>
+
+</body>
+</html>
